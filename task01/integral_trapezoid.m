@@ -16,6 +16,5 @@ for i = 1:no_splits
         fun(low_limit + i*h) );
 end
 
-
 end
 
