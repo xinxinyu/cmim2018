@@ -13,7 +13,7 @@ assumeAlso(c > 0);
 
 syms x(t) position gap1
 %% Analyze free vibrations
-% $$m\ddot{x}+kx=0$$
+% $$m\ddot{x}+kx=0$$ 
 %%
 xp = diff(x, t);
 xpp = diff(xp, t);
