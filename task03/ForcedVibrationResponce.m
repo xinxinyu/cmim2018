@@ -117,30 +117,3 @@ print -depsc2 myplot.eps
 print -dpdf myplot.pdf
 hold off
 
-
-figure('Units','inches','Position',[0 0 6 4],'PaperPositionMode','auto');
-plot(0:0.025:2.5,phi1,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi2,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi3,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi4,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi5,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi6,'LineWidth', 1.5)
-hold on
-plot(0:0.025:2.5,phi7,'LineWidth', 1.5)
-xlim([0,2.5]);
-ylim([0,180]);
-hold off
-ax.XTickLabel = {'0','\pi','2\pi','3\pi'};
-xlabel('Frequency Ratio $$r={f\over f_{n}}$$','FontUnits','points','interpreter','latex','FontSize',12,'FontName','Times')
-ylabel('Amplication Ratio $X\frac{k}{F_{0}}$  ','FontUnits','points','interpreter','latex','FontSize',12,'FontName','Times')
-% legend({'2'},'FontUnits','points','interpreter','latex','FontSize',12,'FontName','Times','Location','NorthEast')
-title('Amplitude','FontUnits','points','FontWeight','normal','FontSize',16,'FontName','Times')
-grid on
-print -depsc2 myplot.eps
-print -dpdf myplot.pdf
-hold off
