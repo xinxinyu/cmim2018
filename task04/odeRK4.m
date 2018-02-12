@@ -1,5 +1,5 @@
 function [ T, Y ] = odeRK4( fun, tspan, y0 )
-%ODEFE Simple integration using Runge-Kutta Methods
+%   Simple integration using Runge-Kutta Methods
 %   fun - function handle with interface fun(t, y)
 %   tspan - two element vector with dt and tend
 %   y0 - initial conditions
@@ -18,6 +18,7 @@ Y(:, 1) = y0(:);
 
 % compute the solution
 for i = 2:n
+    
     K1 = fun(T(i-1), Y(:, i-1));
     K2 = fun(T(i-1)+dt/2, Y(:, i-1)+0.5*dt*K1);
     K3 = fun(T(i-1)+dt/2, Y(:, i-1)+0.5*dt*K2);

@@ -1,9 +1,10 @@
-function dy = MassSpring(t,y,m,k)
+function [dy,dv] = MassSpring(t,y,v,m,k)
 
 
-dy=zeros(2,1);
+% dy=0;
+% dv=0;
 
-dy(1)=y(2);
-dy(2)=(-k/m)*y(1);
+dy=v;             %% velocity of the system
+dv=(-k/m)*y;      %% accelation of the system
 
 end
