@@ -11,21 +11,16 @@ T = 0:dt:tspan(2);
 
 n = length(T);
 
-Y = zeros(length(y0), n);
+% Y = zeros(length(y0), n);
 
-% populate initial conditions
 Y(:, 1) = y0(:);
-V(:, 1) = zeros(2,1);
-% compute the solution
-for i = 2:n
+V(:, 1) = y0(:);
+for i = 2:n                                  
     
     Y(:, i) = Y(:, i-1) + dt * fun(T(i-1), V(:, i-1));
-    if i < n
     V(:, i) = V(:, i-1) + dt * fun(T(i-1), Y(:, i));
-    end
-
-
 end
+
 
 end
 
