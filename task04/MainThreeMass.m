@@ -1,7 +1,7 @@
 
 clear all
 clc;
-dt = 1e-3;
+dt = 1e-5;
 tk = 1;
 
 m1=2;
@@ -27,4 +27,15 @@ y0=[0 0 3 0 0 0];
 [T, Y3] = odeRK4(@(t,y) ThreeSpring(t,y,M,K), [dt tk], y0);
 Y3=Y3';
 
-% [T, Y4] = odeSemiFE(@(t,y) ThreeSpring(t,y), [0:dt:tk], y0);
+[T, Y4] = odeSemiFE(@(t,y) ThreeSpring(t,y,M,K), [dt tk], y0,K,M);
+Y4=Y4';
+
+
+plot(Y1(:,1))
+hold on
+plot(Y2(:,1))
+hold on
+plot(Y3(:,1))
+hold on
+plot(Y4(:,1))
+hold off
