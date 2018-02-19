@@ -10,7 +10,7 @@ up_limitY=5;
 no_splits=100;
 
 
- result = integral_trapezoid(@(y)(integral_trapezoid(@(x)(-x^4-y^4),low_limitX, up_limitX,no_splits)),low_limitY, up_limitY,no_splits);
+result = integral_trapezoid(@(y)(integral_trapezoid(@(x)(-x^4-y^4),low_limitX, up_limitX,no_splits)),low_limitY, up_limitY,no_splits);
 
 toc
 x=-3:6/100:3;
