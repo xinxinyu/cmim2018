@@ -1,4 +1,4 @@
-function [ T, Y] = odeSemiFE( fun_f,fun_g, tspan, u0, v0)
+function [ T, u,v] = odeSemiFE( fun_f,fun_g, tspan, u0, v0)
 %   Simple integration using Semi-implicit Euler Method
 %   fun - function handle with interface fun(t, y)
 %   tspan - two element vector with dt and tend
@@ -6,15 +6,19 @@ function [ T, Y] = odeSemiFE( fun_f,fun_g, tspan, u0, v0)
 
 T = tspan;
 n = length(T);
-u = zeros(length(u0),length(tspan));
-v = zeros(length(v0),length(tspan));
+u = zeros(length(u0),n);
+v = zeros(length(v0),n);
 u(:,1) = u0;
 v(:,1) = v0;
 
-for i = 2:T
+for i = 2:n
     dt = T(i)-T(i-1);
     v(:,i) = v(:,i-1) + dt*fun_g(T(i-1), u(:,i-1));
     u(:,i) = u(:,i-1) + dt*fun_f(T(i-1), v(:,i));
+end
+
+
+
 
 
 % time step
@@ -38,7 +42,7 @@ for i = 2:T
 % end
 
 
-end
+
 
 
 
