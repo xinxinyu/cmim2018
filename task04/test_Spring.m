@@ -17,12 +17,18 @@ Total=V+U;
 
 set(gcf, 'PaperUnits', 'centimeters');
 set(gcf, 'PaperPosition', [0 0 8 6]);
-plot(0:dt:tk,Y(1,:),'LineWidth', 1.2)
-hold on
-plot(0:dt:tk,Total,'LineWidth', 1.2)
-xlabel('Time','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
-ylabel('Diaplacement-Energy','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
-legend({'position','total energy'},'FontUnits','points','interpreter','latex','FontSize',6,'FontName','Times','Location','NorthWest')
+plot(0:dt:tk,Y(1,:),'LineWidth', 1.2, 'color', 'black')
+xlabel('Time (t)','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
+ylabel('Diaplacement (m)','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
 grid on
-print -depsc2 task3.eps
+print -depsc2 task3displacement.eps
+hold off
+
+set(gcf, 'PaperUnits', 'centimeters');
+set(gcf, 'PaperPosition', [0 0 8 6]);
+plot(0:dt:tk,Total,'LineWidth', 1.2, 'color', 'black')
+xlabel('Time','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
+ylabel('Energy (J)','FontUnits','points','interpreter','latex','FontSize',11,'FontName','Times')
+grid on
+print -depsc2 task3energy.eps
 hold off
