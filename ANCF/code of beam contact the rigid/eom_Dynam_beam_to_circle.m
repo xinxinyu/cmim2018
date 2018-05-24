@@ -39,9 +39,8 @@ Fecf = Fec*dt;                      %% elastic impulse      %% Xinxin rectified 
 
 
 %% contact force
-% % construct D matrix
-    D = Dmatrix_beam_to_circle(t,u,v,ElemDofs,rho,g,lambda,G,L,H,W,ee0bc,ee0dotbc,bcInd,xloc,nl,nx,ndof,bc,MInvSparse,dt,mu,DIM,nc,Nk,xi,ee);
-    D = D.';
+% construct D matrix
+    D = Dmatrix_beam_to_circle(t,u,v,ElemDofs,rho,g,lambda,G,L,H,W,ee0bc,ee0dotbc,bcInd,xloc,nl,nx,ndof,bc,MInvSparse,dt,mu,DIM,nc,Nk,ee,xi,r);
     N = D.'*MInvSparse*D;                                   %% Matrix N for CCP formulation            %% Xinxin rectified it
     N=(N+N')/2;
     V = eedot;
