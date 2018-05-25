@@ -18,8 +18,8 @@ for i = 1:nj
     m = 2*i-1:2*i;
     
     if ib == 0           % left revolute of the body connect with the ground
-      C(m,1) = [xx(jb)+model_def.bodies(jb).uix*cos(phi(jb))+model_def.bodies(jb).uiy*sin(phi(jb));
-                yy(jb)+model_def.bodies(jb).uix*sin(phi(jb))-model_def.bodies(jb).uiy*cos(phi(jb))];
+      C(m,1) = [xx(jb)+model_def.bodies(jb).uix*cos(phi(jb))-model_def.bodies(jb).uiy*sin(phi(jb));
+                yy(jb)+model_def.bodies(jb).uix*sin(phi(jb))+model_def.bodies(jb).uiy*cos(phi(jb))];
     elseif jb == 0         % right revolute of the body connect with the ground
         
       C(m,1) = [xx(ib)+model_def.bodies(ib).ujx*cos(phi(ib))-model_def.bodies(ib).ujy*sin(phi(ib));
@@ -38,15 +38,15 @@ for i = 1:nj
     m = 2*i-1:2*i;
 
     if ib == 0           % left revolute of the body connect with the ground
-      Cq(m,3*jb-2:3*jb) = [1 0 -model_def.bodies(jb).uix*sin(phi(jb))+model_def.bodies(jb).uiy*cos(phi(jb));
-                           0 1 model_def.bodies(jb).uix*cos(phi(jb))+model_def.bodies(jb).uiy*sin(phi(jb))];
+      Cq(m,3*jb-2:3*jb) = [1 0 -model_def.bodies(jb).uix*sin(phi(jb))-model_def.bodies(jb).uiy*cos(phi(jb));
+                           0 1 model_def.bodies(jb).uix*cos(phi(jb))-model_def.bodies(jb).uiy*sin(phi(jb))];
     elseif jb == 0         % right revolute of the body connect with the ground       
       Cq(m,3*ib-2:3*ib) = [1 0 -model_def.bodies(ib).ujx*sin(phi(ib))-model_def.bodies(ib).ujy*cos(phi(ib));
                            0 1 model_def.bodies(ib).ujx*cos(phi(ib))-model_def.bodies(ib).ujy*sin(phi(ib))];
     else    
       Cq(m,3*ib-2:3*ib) = [1 0 -model_def.bodies(ib).ujx*sin(phi(ib))-model_def.bodies(ib).ujy*cos(phi(ib));
                            0 1 model_def.bodies(ib).ujx*cos(phi(ib))-model_def.bodies(ib).ujy*sin(phi(ib))];
-      Cq(m,3*jb-2:3*jb) = [-1 0 model_def.bodies(jb).ujx*sin(phi(jb))-model_def.bodies(jb).ujy*cos(phi(jb));
+      Cq(m,3*jb-2:3*jb) = [-1 0 model_def.bodies(jb).ujx*sin(phi(jb))+model_def.bodies(jb).ujy*cos(phi(jb));
                            0 -1 -model_def.bodies(jb).ujx*cos(phi(jb))+model_def.bodies(jb).ujy*sin(phi(jb))];                    
     end
     
@@ -61,13 +61,13 @@ for i = 1:nj
     m = 2*i-1:2*i;    
     if ib == 0           % left revolute of the body connect with the ground
       G(m,1) = -[-dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*cos(phi(jb))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*sin(phi(jb));
-                 -dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*sin(phi(jb))+dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*cos(phi(jb))];
+                 -dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*sin(phi(jb))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*cos(phi(jb))];
     elseif jb == 0         % right revolute of the body connect with the ground
         
       G(m,1) = -[-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujx*cos(phi(ib))+dphi(ib)*dphi(ib)*model_def.bodies(ib).ujy*sin(phi(ib));
                  -dphi(ib)*dphi(ib)*model_def.bodies(ib).ujx*sin(phi(ib))-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujy*cos(phi(ib))];
     else               
-      G(m,1) = -[-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujx*cos(phi(ib))-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujy*sin(phi(ib))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*cos(phi(jb))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*sin(phi(jb));
+      G(m,1) = -[-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujx*cos(phi(ib))+dphi(ib)*dphi(ib)*model_def.bodies(ib).ujy*sin(phi(ib))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*cos(phi(jb))+dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*sin(phi(jb));
                  -dphi(ib)*dphi(ib)*model_def.bodies(ib).ujx*sin(phi(ib))-dphi(ib)*dphi(ib)*model_def.bodies(ib).ujy*cos(phi(ib))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uix*sin(phi(jb))-dphi(jb)*dphi(jb)*model_def.bodies(jb).uiy*cos(phi(jb))]; 
     end    
 end
